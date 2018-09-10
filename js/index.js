@@ -3,6 +3,11 @@ for (let i = 0; i < squareDivs.length; i++) {
     let width = $(squareDivs[i]).width();
     $(squareDivs[i]).height(`${0.78*width}`);
 }
+let imgBlock = $('#section5_img');
+let filterButtons = $('#filter_buttons div');
+let loadMore = $('.load_more');
+let clickCount = 0;
+let imgBlockOffset = $(imgBlock).offset().top;
 
 let ourServiceMenu = $('#our_services_menu div');
 let ourServiceImg = $('#our_services_content img');
@@ -46,6 +51,135 @@ for (let i = 0; i < ourServiceMenu.length; i++) {
 
     })
 }
+
+
+
+function all() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 1; i <= 36; i++) {
+            $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+        }
+    }
+
+function webDesign() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 0; i <= 36; i += 2) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+function graphicDesign() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 10; i <= 36; i++) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+function landingPages() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 12; i <= 36; i+=2) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+function appDesign() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 1; i <= 36; i+=3) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+function wordPress() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 4; i <= 36; i+=4) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+function seoService() {
+    $(imgBlock).height('630px');
+    $('#section5').height('1212px');
+    for (let i = 5; i <= 36; i+=5) {
+        $(imgBlock).append(`<img src="img/am_work/im${i}.jpg" alt="">`);
+    }
+}
+
+all();
+
+
+for (let i = 0; i < filterButtons.length; i++) {
+    $(filterButtons[i]).click(function () {
+        if (!$(this).hasClass('filter_selected')) {
+            clickCount = 0;
+            $(this).removeClass('filter_unselected');
+            $(this).addClass('filter_selected');
+            for (let j = 0; j < filterButtons.length; j++) {
+                if ($(filterButtons[j]).text() !== $(this).text() && $(filterButtons[j]).hasClass('filter_selected')) {
+                    $(filterButtons[j]).removeClass('filter_selected');
+                    $(filterButtons[j]).addClass('filter_unselected');
+                }
+            }
+            if ($(this).text() === 'All') {
+
+                $(imgBlock).html('');
+                all();
+            } else if ($(this).text() === 'Graphic Design') {
+                $(imgBlock).html('');
+                graphicDesign();
+            } else if ($(this).text() === 'Web Design') {
+                $(imgBlock).html('');
+                webDesign();
+            } else if ($(this).text() === 'Landing Pages') {
+                $(imgBlock).html('');
+                landingPages();
+            } else if ($(this).text() === 'Wordpress') {
+                $(imgBlock).html('');
+                wordPress();
+            }
+            let imgCount = $('#section5_img img').length/12;
+            if (imgCount <= 1) {
+                $(loadMore).removeClass('load_more');
+                $(loadMore).addClass('load_more_hide');
+            } else {
+                $(loadMore).removeClass('load_more_hide');
+                $(loadMore).addClass('load_more');
+            }
+        }
+    })
+}
+
+
+
+$(loadMore).click(function () {
+   let imgCount = $('#section5_img img').length;
+   let maxClicks = Math.ceil(imgCount/12) - 1;
+   let heightImgBlock = $(imgBlock).height();
+   let sectionHeight = $('#section5').height();
+   let updatedHeight = sectionHeight + 670;
+   $('#section5').height(`${updatedHeight}px`);
+   let scrollToTheEnd = imgBlockOffset + heightImgBlock + 33;
+   $(imgBlock).animate({height: `${heightImgBlock + 630}px`}, 1000);
+    $(document).scrollTop(scrollToTheEnd);
+    clickCount++;
+   if (clickCount === maxClicks) {
+       $(loadMore).removeClass('load_more');
+       $(loadMore).addClass('load_more_hide');
+       clickCount = 0;
+   }
+});
+
+
+
+
+
+
+
 
 
 
