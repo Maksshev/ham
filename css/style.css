@@ -415,10 +415,12 @@ i {
 
 #section5_img {
     width: 1160px;
+    height: 600px;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    border: 1px solid red;
 }
 
 .load_more {
@@ -446,6 +448,9 @@ i {
 .load_more_hide {
     display: none;
 }
+
+
+
 
 
 
