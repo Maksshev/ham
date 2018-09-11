@@ -1,9 +1,10 @@
 let squareDivs = $('#section2 div');
+let filters = ['graphic', 'web', 'landing', 'wordpress', 'section5_img img'];
 for (let i = 0; i < squareDivs.length; i++) {
     let width = $(squareDivs[i]).width();
     $(squareDivs[i]).height(`${0.78*width}`);
 }
-let imgBlock = $('#section5_img');
+let imgBlock = $('.section5_img');
 let filterButtons = $('#filter_buttons div');
 let loadMore = $('.load_more');
 let clickCount = 0;
@@ -51,6 +52,78 @@ for (let i = 0; i < ourServiceMenu.length; i++) {
 
     })
 }
+
+
+for (let i = 1; i <= 36; i++) {
+    let filter = filters[Math.floor(Math.random()*4)];
+    $('.section5_img').append(`<img class="${filter}" src="img/am_work/im${i}.jpg">`);
+    showFilter(4);
+}
+
+$('#filter_buttons').click(function (e) {
+    if (e.target !== this) {
+        if (!$(e.target).hasClass('filter_selected')) {
+            $('#filter_buttons div').each(function () {
+                if ($(this) !== $(e.target)) {
+                    $(this).removeClass('filter_selected');
+                    $(this).addClass('filter_unselected');
+                }
+            });
+            $(e.target).removeClass('filter_unselected');
+            $(e.target).addClass('filter_selected');
+            if ($(e.target).text() === 'Graphic Design') {
+                $('.section5_img img').hide();
+                showFilter(0);
+            } else if ($(e.target).text() === 'Web Design') {
+                $('.section5_img img').hide();
+                showFilter(1);
+            } else if ($(e.target).text() === 'Landing Pages') {
+                $('.section5_img img').hide();
+                showFilter(2);
+            } else if ($(e.target).text() === 'Wordpress') {
+                $('.section5_img img').hide();
+                showFilter(3);
+            } else {
+                $('.section5_img img').hide();
+                showFilter(4);
+            }
+
+        }
+    }
+    e.stopPropagation();
+})
+
+
+
+
+
+function showFilter(selector) {
+    $(`.${filters[selector]}`).slice(0, 12).fadeIn();
+    if ($(`.${filters[selector]}:hidden`).length === 0) {
+        $(".load_more").css('visibility', 'hidden');
+    } else {
+        $(".load_more").css('visibility', 'visible');
+    }
+    $('.load_more').unbind('click');
+    $(".load_more").on('click', function (e) {
+        e.preventDefault();
+        console.log($(`.${filters[selector]}:hidden`).slice(0, 12));
+        $(`.${filters[selector]}:hidden`).slice(0, 12).slideDown();
+        if ($(`.${filters[selector]}:hidden`).length === 0) {
+            $(".load_more").css('visibility', 'hidden');
+        }
+        if ($(`.${filters[selector]}:visible`).length > 12) {
+            $('html,body').animate({
+                scrollTop: $(this).offset().top
+            }, 1500);
+        }
+    });
+}
+
+
+
+
+
 
 
 
