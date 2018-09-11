@@ -179,7 +179,7 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 560px;
+    min-height: 560px;
 }
 
 #section3_content {
@@ -261,7 +261,7 @@ i {
     padding-right: 20px;
 }
 
-#our_services_content div {
+#our_services_content > div div {
     text-align: justify;
     margin-left: 20px;
     font-family: Montserrat,sans-serif;
@@ -270,6 +270,10 @@ i {
     line-height: 25px;
     position: relative;
     top: -5px;
+}
+
+#our_services_content > div {
+    overflow: hidden;
 }
 
 .arrowOnClick {
@@ -454,6 +458,12 @@ i {
 
 .load_more_hide {
     display: none;
+}
+
+.temp2 {
+    width: 1160px;
+    height: 194px;
+
 }
 
 
