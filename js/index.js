@@ -177,8 +177,11 @@ $('.section5_img img').mouseenter(function (e) {
 
 
 $('#hoverImg').mouseleave(function (e) {
+    clearInterval(interval);
+    timeCount = 0;
     $('#hoverImg').finish();
     $(this).css({top: '0', left: '0', height: '0', width: '0'});
+
 });
 
 

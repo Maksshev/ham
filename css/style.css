@@ -235,6 +235,7 @@ i {
     width: 100%;
     margin-top: 100px;
     display: flex;
+    margin-bottom: 35px;
 }
 
 .offClick {
@@ -255,7 +256,7 @@ i {
 }
 
 #our_services_content {
-    margin-top: 25px;
+    margin-bottom: 35px;
 }
 
 #our_services_content img {
