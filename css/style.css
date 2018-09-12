@@ -363,6 +363,7 @@ i {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 #section5 > div:first-child span {
@@ -460,11 +461,47 @@ i {
     display: none;
 }
 
-.temp2 {
-    width: 1160px;
-    height: 194px;
-
+#hoverImg {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+
+#hoverImg span:first-of-type {
+    color:  #18cfab;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    bottom: 10px;
+}
+
+#hoverImg span:last-of-type {
+    color: #8a8a8a;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#hoverImg > div {
+    padding-bottom: 20px;
+}
+
+#hoverImg img {
+    margin-top: 20px;
+}
+
+
+
+
 
 
 
