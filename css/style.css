@@ -1,5 +1,6 @@
 html, body {
     min-width: 1200px;
+    font-family: Montserrat, sans-serif;
 }
 
 #section1 {
@@ -191,6 +192,7 @@ i {
 }
 
 #section3 span:first-child {
+    margin-top: 70px;
     font-family: Montserrat, sans-serif;
     color: #4e4e4e;
     font-size: 36px;
@@ -357,7 +359,7 @@ i {
 
 #section5 {
     width: 100%;
-    /*height: 1212px;*/
+    /*min-height: 1212px;*/
     background-color: #f8fcfe;
     display: flex;
     flex-direction: column;
@@ -435,7 +437,8 @@ i {
 }
 
 .load_more {
-    margin-top: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 165px;
     height: 60px;
     background-color: #18cfab;
@@ -498,6 +501,104 @@ i {
 #hoverImg img {
     margin-top: 20px;
 }
+
+#section6 {
+    width: 100%;
+    height: 960px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#section6_container {
+    width: 1160px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#section6_container > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#section6_container > div > span {
+    color:  #4e4e4e;
+    font-size: 36px;
+}
+
+#wrapper_section6 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 605px;
+}
+
+#test {
+    width: 263px;
+    position: relative;
+}
+
+.bnews {
+    display: block;
+    height: 280px;
+    width: 263px;
+    text-decoration: none;
+}
+
+.text_bnews {
+    width: 100%;
+    height: 72px;
+    background-color: #f8fcfe;
+}
+
+.text_bnews > span:first-of-type {
+    display: block;
+    margin-left: 17px;
+    color: #717171;
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.text_bnews p {
+    margin-left: 17px;
+    color: #777777;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.text_bnews p span {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.date_block {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 68px;
+    height: 68px;
+    background-color: #203e38;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+.bnews:hover .date_block {
+    background-color: #18cfab;
+}
+
+.bnews:hover .text_bnews > span {
+    color: #18cfab;
+}
+
 
 
 
