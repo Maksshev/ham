@@ -133,23 +133,28 @@ function showFilter(selector) {
     $('.load_more').off('click');
     $(".load_more").on('click', function (e) {
         e.preventDefault();
-        console.log($(`.${filters[selector]}:hidden`).slice(0, 12));
-        $(`.${filters[selector]}:hidden`).slice(0, 12).slideDown();
-        if ($(`.${filters[selector]}:hidden`).length === 0) {
-            $(".load_more").css('visibility', 'hidden');
-        }
-        if ($(`.${filters[selector]}:visible`).length > 12) {
-            let offset = $(this).offset().top;
-            let offsetDf = offset - 680;
-            $('html,body').animate({
-                scrollTop: `${offsetDf}`
-            }, 1500);
-        }
+        $('.load_more').hide();
+        $('.lds-circle').css('display', 'inline-block');
+        setTimeout(function () {
+            $('.load_more').show();
+            $('.lds-circle').css('display', 'none');
+            $(`.${filters[selector]}:hidden`).slice(0, 12).slideDown();
+            if ($(`.${filters[selector]}:hidden`).length === 0) {
+                $(".load_more").css('visibility', 'hidden');
+            }
+                let offset = $('.load_more').offset().top;
+                let offsetDf = offset - 680;
+                $('html,body').animate({
+                    scrollTop: `${offsetDf}`
+                }, 1500);
+        }, 2000);
+
     });
 }
 
 let interval;
 let timeCount;
+let filterName;
 
 
 
@@ -159,11 +164,23 @@ $('.section5_img img').mouseenter(function (e) {
             interval = setInterval(function () {
                 timeCount = Date.now() - timeNow;
             }, 1);
+            filterName = $(this).attr('class');
             $('#hoverImg').finish('mouseleave');
             let imgOffset = $(this).offset();
             $('#hoverImg').offset(imgOffset);
             setTimeout(function () {
                 if (timeCount > 1500) {
+                    let filterText;
+                    if (filterName === 'graphic') {
+                        filterText = 'Graphic Design';
+                    } else if (filterName === 'web') {
+                        filterText = 'Web Design';
+                    } else if (filterName === 'landing') {
+                        filterText = 'Landing Pages';
+                    } else if (filterName === 'wordpress') {
+                        filterText = 'Wordpress';
+                    }
+                    $('#hoverImg div > span:last-of-type').text(filterText);
                     $('#hoverImg').animate({height: '210px', width: '290px'}, 600);
                 }
 
@@ -190,6 +207,98 @@ $('.bnews').mouseenter(function (e) {
 }).mouseleave(function (e) {
     $(this).find('.text_bnews > span').text('Amazing Blog Post');
 });
+
+
+for (let i = 1; i <= 5; i++) {
+    $('.slide_menu').append(`
+        <div class="g${i} slide_big_circle">
+            <div id="gi${i}" class="slide_little_circle">
+                <img class="small_img" src="img/gallery/wp${i}.jpg">
+            </div>
+        </div>
+    `);
+    $(`.g${i}`).css('order', `${i}`);
+}
+
+function showOrder() {
+    let imgClass;
+    $('#bigImg .slide_big_circle').each(function () {
+        if ($(this).css('order') !== '3') {
+            $(this).hide();
+        } else {
+            $(this).fadeIn(2400);
+            $(this).find('.slide_little_circle').css({border: '2px solid #18cfab'});
+            imgClass = $(this).attr('class');
+        }
+    });
+    $('#slider .slide_big_circle').each(function () {
+        if ($(this).attr('class') === imgClass) {
+            $(this).animate({bottom: '+=15'});
+            $(this).find('.slide_little_circle').css({border: '2px solid #18cfab'});
+        } else {
+            $(this).animate({bottom: '0'});
+            $(this).find('.slide_little_circle').css({border: '2px solid rgba(11, 52, 46, 0.5)'});
+        }
+    })
+}
+
+showOrder();
+
+// let firstImg = $('#slider .g3');
+
+// $(firstImg).css('bottom', '15px');
+// $(firstImg).find('.slide_little_circle').css({border: '2px solid #18cfab'});
+
+
+$('#slider .slide_big_circle').click(function () {
+    let current;
+    let swap;
+    let currentOrder = $(this).css('order');
+    if (currentOrder!== '3') {
+        $('#slider .slide_big_circle').each(function () {
+            if ($(this).css('order') === '3') {
+                $(this).animate({width: '0'}, 600, function () {
+                    $(this).css('order', `${currentOrder}`);
+                });
+                $(this).animate({width: '60px'}, 600);
+            }
+        });
+        $(this).slideUp('slow', function () {
+            $(this).css('order', '3');
+        });
+        $(this).slideDown('slow');
+        $('#bigImg .slide_big_circle').each(function () {
+            if ($(this).css('order') === `${currentOrder}`) {
+                current = this;
+            } else if ($(this).css('order') === '3') {
+                swap = this;
+            }
+        });
+        $(current).css('order', '3');
+        $(swap).css('order', `${currentOrder}`);
+        showOrder();
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
