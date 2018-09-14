@@ -431,6 +431,115 @@ $('.arrow_button').click(function () {
 
 
 
+let $grid = $('.grid').masonry({
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    columnWidth: '.grid-sizer',
+    gutter: 20
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+    $grid.masonry();
+});
+
+// $grid.on( 'click', '.grid-item', function(e) {
+//     // change size of item via class
+//     if (e.target !== this) {
+//         if (!$(e.target).hasClass('grid1-item')) {
+//             $(this).find('img').toggleClass('grid-item--gigante');
+//         }
+//     }
+//     // trigger layout
+//     $grid.masonry();
+// });
+
+
+
+
+
+
+let $grid2 = $('.grid2').masonry({
+    itemSelector: '.grid2-item',
+    percentPosition: true,
+    columnWidth: '.grid2-sizer',
+    gutter: 3
+});
+
+$grid2.imagesLoaded().progress( function() {
+    $grid2.masonry();
+});
+
+let $grid1 = $('.grid1').masonry({
+    itemSelector: '.grid1-item',
+    percentPosition: true,
+    columnWidth: '.grid1-sizer',
+    gutter: 3
+});
+
+$grid1.imagesLoaded().progress( function() {
+    $grid1.masonry();
+});
+
+let $grid3 = $('.grid3').masonry({
+    itemSelector: '.grid3-item',
+    percentPosition: true,
+    columnWidth: '.grid3-sizer',
+    gutter: 1
+});
+
+$grid3.imagesLoaded().progress( function() {
+    $grid3.masonry();
+});
+
+let buttonCount = 0;
+
+$('.load_more_g').click(function () {
+    if (buttonCount < 1) {
+        buttonCount++;
+        let $items;
+        $(this).hide();
+        $('#section8 .lds-circle').css('display', 'inline-block');
+        setTimeout(function () {
+            for (let i = 1; i <= 8; i++) {
+                if (i !== 3) {
+                    $items = $(`<div class="grid-item">
+                    <img src="img/galleryM/${i}.jpg"/>
+                </div>`);
+                    $grid.append($items)
+                        .masonry('appended', $items);
+                }
+                $('#section8 .lds-circle').hide();
+                $('.load_more_g').show();
+            }
+        }, 2000);
+    } else {
+        let $items;
+        $(this).hide();
+        $('#section8 .lds-circle').css('display', 'inline-block');
+        setTimeout(function () {
+            for (let i = 1; i <= 8; i++) {
+                if (i !== 3) {
+                    $items = $(`<div class="grid-item">
+                    <img src="img/galleryM/${i}.jpg"/>
+                </div>`);
+                    $grid.append($items)
+                        .masonry('appended', $items);
+                }
+                $('#section8 .lds-circle').hide();
+                $('.load_more_g').show();
+                $('.load_more_g').css('visibility', 'hidden');
+            }
+        }, 2000);
+    }
+
+});
+
+
+
+
+
+
+
 
 
 
