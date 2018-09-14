@@ -21,6 +21,17 @@ let text2 = 'Li Europan lingues es membres del sam familie. Lor separat existent
 let text3 = 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli.';
 let text4 = 'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by.';
 let text5 = 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What\'s happened to me?" he thought. It wasn\'t a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it ther.';
+let textGal1 = 'Integer dignissim, augue tempus ultricies luctus, quam dui laoreet sem, non dictum odio nisi quis massa. Morbi pulvinar odio eget aliquam facilisis. Tempus ultricies luctus, quam dui laoreet sem, non dictum odio nisi quis massa. Morbi pulvinar odio eget aliquam facilisis.';
+let textGal2 = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla cons.';
+let textGal3 = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.';
+let textGal4 = 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite d.';
+let textGal5 = 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supp.';
+let arrayGal1 = ['Hasan Ali', 'UX Designer', textGal1];
+let arrayGal2 = ['Frank Lampard', 'Web Developer', textGal2];
+let arrayGal3 = ['John Terry', 'Project Manager', textGal3];
+let arrayGal4 = ['Didier Drogba', 'Product Manager', textGal4];
+let arrayGal5 = ['Eden Hazard', 'Senior Developer', textGal5];
+let objGal = {1: arrayGal1, 2: arrayGal2, 3: arrayGal3, 4: arrayGal4, 5: arrayGal5};
 let textArray = [text0, text1, text2, text3, text4, text5];
 
 for (let i = 0; i <= 5; i++) {
@@ -226,6 +237,20 @@ function showOrder() {
         if ($(this).css('order') !== '3') {
             $(this).hide();
         } else {
+            let bigPointer = Number($(this).attr('class')[1]);
+            for (let key in objGal) {
+                if (bigPointer === Number(key)) {
+                    $('#section7_text').fadeOut(function () {
+                        $(this).text(objGal[key][2]).fadeIn(1500);
+                    });
+                    $('#section7_name > span:first-of-type').fadeOut(function () {
+                        $(this).text(objGal[key][0]).fadeIn(1500);
+                    });
+                    $('#section7_name > span:last-of-type').fadeOut(function () {
+                        $(this).text(objGal[key][1]).fadeIn(1500);
+                    });
+                }
+            }
             $(this).fadeIn(2400);
             $(this).find('.slide_little_circle').css({border: '2px solid #18cfab'});
             imgClass = $(this).attr('class');
@@ -296,6 +321,19 @@ $('#slider .slide_big_circle').click(function () {
                     $(this).hide();
                 }
             });
+            for (let key in objGal) {
+                if (bigPointer === Number(key)) {
+                    $('#section7_text').fadeOut(function () {
+                        $(this).text(objGal[key][2]).fadeIn(400);
+                    });
+                    $('#section7_name > span:first-of-type').fadeOut(function () {
+                        $(this).text(objGal[key][0]).fadeIn(400);
+                    });
+                    $('#section7_name > span:last-of-type').fadeOut(function () {
+                        $(this).text(objGal[key][1]).fadeIn(400);
+                    });
+                }
+            }
         }
     }
 
@@ -331,6 +369,19 @@ $('.arrow_button').click(function () {
                         $(this).hide();
                     }
                 });
+                for (let key in objGal) {
+                    if (bigPointer === Number(key)) {
+                        $('#section7_text').fadeOut(function () {
+                            $(this).text(objGal[key][2]).fadeIn(400);
+                        });
+                        $('#section7_name > span:first-of-type').fadeOut(function () {
+                            $(this).text(objGal[key][0]).fadeIn(400);
+                        });
+                        $('#section7_name > span:last-of-type').fadeOut(function () {
+                            $(this).text(objGal[key][1]).fadeIn(400);
+                        });
+                    }
+                }
             }
         })
     } else {
@@ -360,6 +411,19 @@ $('.arrow_button').click(function () {
                         $(this).hide();
                     }
                 });
+                for (let key in objGal) {
+                    if (bigPointer === Number(key)) {
+                        $('#section7_text').fadeOut(function () {
+                            $(this).text(objGal[key][2]).fadeIn(400);
+                        });
+                        $('#section7_name > span:first-of-type').fadeOut(function () {
+                            $(this).text(objGal[key][0]).fadeIn(400);
+                        });
+                        $('#section7_name > span:last-of-type').fadeOut(function () {
+                            $(this).text(objGal[key][1]).fadeIn(400);
+                        });
+                    }
+                }
             }
         })
     }
