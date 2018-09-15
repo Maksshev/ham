@@ -538,7 +538,7 @@ i {
     height: 605px;
 }
 
-#test {
+.test {
     width: 263px;
     position: relative;
 }
@@ -745,7 +745,7 @@ i {
     transform: scale(2);
 }
 
-i {
+#section7 i {
     border: solid white;
     border-width: 0 2px 2px 0;
     display: inline-block;
@@ -875,7 +875,7 @@ i {
 
 .grid1 {
     width: 100%;
-    height: 100%;
+    height: 456px;
 }
 
 .grid1-item {
@@ -914,6 +914,7 @@ i {
 
 .grid3 {
     width: 100%;
+    height: 276px;
 }
 
 .grid3-item {
@@ -976,6 +977,34 @@ footer {
 footer span:nth-of-type(2) {
     color: #18cfab;
 }
+
+#hover_g {
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 9999px;
+
+}
+#hover_g div{
+    width: 40px;
+    height: 25px;
+    background: #14b9d5;
+    grid-row-start: 2;
+    margin-left: 10px;
+    text-align: center;
+    padding-top: 10px;
+    color: #fff;
+    cursor:pointer;
+    position: relative;
+}
+
+#hover_g div i {
+    position: relative;
+    top: -2px;
+}
+
 
 
 

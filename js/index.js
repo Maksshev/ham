@@ -437,21 +437,14 @@ let $grid = $('.grid').masonry({
     columnWidth: '.grid-sizer',
     gutter: 20
 });
-// layout Masonry after each image loads
+
+$grid.masonry();
+
 $grid.imagesLoaded().progress( function() {
     $grid.masonry();
 });
 
-// $grid.on( 'click', '.grid-item', function(e) {
-//     // change size of item via class
-//     if (e.target !== this) {
-//         if (!$(e.target).hasClass('grid1-item')) {
-//             $(this).find('img').toggleClass('grid-item--gigante');
-//         }
-//     }
-//     // trigger layout
-//     $grid.masonry();
-// });
+
 
 
 
@@ -491,6 +484,26 @@ $grid3.imagesLoaded().progress( function() {
     $grid3.masonry();
 });
 
+
+function hoverGallery() {
+    $('.grid-item img').mouseenter(function () {
+        let offset = $(this).offset();
+        let width = $(this).width();
+        let height = $(this).height();
+        console.log(offset);
+        $('#hover_g').offset(offset).height(height).width(width);
+        if (width < 180) {
+            $('#hover_g div').css('left', '-4px');
+        }
+    });
+
+    $('#hover_g').mouseleave(function () {
+        $(this).css('left', '99999px');
+    });
+}
+
+hoverGallery();
+
 let buttonCount = 0;
 
 $('.load_more_g').click(function () {
@@ -508,6 +521,7 @@ $('.load_more_g').click(function () {
                     $grid.append($items)
                         .masonry('appended', $items);
                 }
+                hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
             }
@@ -525,14 +539,19 @@ $('.load_more_g').click(function () {
                     $grid.append($items)
                         .masonry('appended', $items);
                 }
+                hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
                 $('.load_more_g').css('visibility', 'hidden');
             }
         }, 2000);
     }
-
 });
+
+
+
+
+
 
 
 
