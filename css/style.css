@@ -1,6 +1,7 @@
 html, body {
     min-width: 1200px;
     font-family: Montserrat, sans-serif;
+    overflow-x: hidden;
 }
 
 #section1 {
