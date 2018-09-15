@@ -522,8 +522,11 @@ $('.load_more_g').click(function () {
                 }
             }
                 $items = $(array.join());
-                $grid.append($items)
-                    .masonry('appended', $items);
+                setTimeout(function () {
+                    $grid.append($items)
+                        .masonry('appended', $items);
+                }, 500);
+
                 hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
@@ -543,8 +546,11 @@ $('.load_more_g').click(function () {
                 }
             }
                 $items = $(array.join());
-                $grid.append($items)
-                    .masonry('appended', $items);
+                setTimeout(function () {
+                    $grid.append($items)
+                        .masonry('appended', $items);
+                }, 500);
+
                 hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
