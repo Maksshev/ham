@@ -513,37 +513,43 @@ $('.load_more_g').click(function () {
         $(this).hide();
         $('#section8 .lds-circle').css('display', 'inline-block');
         setTimeout(function () {
+            let array = [];
             for (let i = 1; i <= 8; i++) {
                 if (i !== 3) {
-                    $items = $(`<div class="grid-item">
+                    array.push(`<div class="grid-item">
                     <img src="img/galleryM/${i}.jpg"/>
                 </div>`);
-                    $grid.append($items)
-                        .masonry('appended', $items);
                 }
+            }
+                $items = $(array.join());
+                $grid.append($items)
+                    .masonry('appended', $items);
                 hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
-            }
+
         }, 2000);
     } else {
         let $items;
         $(this).hide();
         $('#section8 .lds-circle').css('display', 'inline-block');
         setTimeout(function () {
+            let array = [];
             for (let i = 1; i <= 8; i++) {
                 if (i !== 3) {
-                    $items = $(`<div class="grid-item">
+                    array.push(`<div class="grid-item">
                     <img src="img/galleryM/${i}.jpg"/>
                 </div>`);
-                    $grid.append($items)
-                        .masonry('appended', $items);
                 }
+            }
+                $items = $(array.join());
+                $grid.append($items)
+                    .masonry('appended', $items);
                 hoverGallery();
                 $('#section8 .lds-circle').hide();
                 $('.load_more_g').show();
                 $('.load_more_g').css('visibility', 'hidden');
-            }
+
         }, 2000);
     }
 });
