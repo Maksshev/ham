@@ -521,15 +521,15 @@ $('.load_more_g').click(function () {
                 </div>`);
                 }
             }
-                $items = $(array.join());
+                $items = $(array.join(''));
                 setTimeout(function () {
                     $grid.append($items)
                         .masonry('appended', $items);
+                    hoverGallery();
+                    $('#section8 .lds-circle').hide();
+                    $('.load_more_g').show();
                 }, 500);
 
-                hoverGallery();
-                $('#section8 .lds-circle').hide();
-                $('.load_more_g').show();
 
         }, 2000);
     } else {
@@ -545,16 +545,17 @@ $('.load_more_g').click(function () {
                 </div>`);
                 }
             }
-                $items = $(array.join());
+                $items = $(array.join(''));
                 setTimeout(function () {
                     $grid.append($items)
                         .masonry('appended', $items);
+                    hoverGallery();
+                    $('#section8 .lds-circle').hide();
+                    $('.load_more_g').show();
+                    $('.load_more_g').css('visibility', 'hidden');
                 }, 500);
 
-                hoverGallery();
-                $('#section8 .lds-circle').hide();
-                $('.load_more_g').show();
-                $('.load_more_g').css('visibility', 'hidden');
+
 
         }, 2000);
     }
